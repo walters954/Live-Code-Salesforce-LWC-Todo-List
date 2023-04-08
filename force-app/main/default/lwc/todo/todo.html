@@ -1,0 +1,34 @@
+<template>
+    <lightning-card  title="Todo List">
+        <lightning-button label="Clear List" onclick={handleClear} slot="actions"></lightning-button>
+        <p class="slds-p-horizontal_small">
+            <lightning-layout multiple-rows=true>
+                <template if:false={hasTodoListItems}>
+                    <lightning-layout-item padding="around-small" size="12">
+                        <div class="slds-text-heading_medium">
+                            <span>Add some todo list items</span>
+                        </div>
+                    </lightning-layout-item>
+                </template>
+                <lightning-layout-item padding="around-small" size="9">
+                    <lightning-input type="text" label="New Todo" placeholder="New Todo" variant="label-hidden" onchange={handleChange} value={todoValue}></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="3">
+                    <lightning-button label="Add" variant="brand" onclick={addTodo}></lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+        </p>
+            <div slot="footer">
+                <template for:each={todoList} for:item="todo" if:true={hasTodoListItems}>
+                    <c-todo-item 
+                        key={todo.id} 
+                        todo-value={todo.value} 
+                        todo-status={todo.status}
+                        todo-id={todo.id}
+                        class="slds-p-around_small"
+                        ondelete={deleteHandler}
+                    ></c-todo-item>                
+                </template>
+            </div>    
+    </lightning-card>
+</template>
