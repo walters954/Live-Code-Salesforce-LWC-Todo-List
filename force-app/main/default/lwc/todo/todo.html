@@ -1,7 +1,7 @@
 <template>
     <lightning-card  title="Todo List">
         <lightning-button label="Clear List" onclick={handleClear} slot="actions"></lightning-button>
-        <p class="slds-p-horizontal_small">
+        <div class="slds-p-horizontal_small">
             <lightning-layout multiple-rows=true>
                 <template if:false={hasTodoListItems}>
                     <lightning-layout-item padding="around-small" size="12">
@@ -17,9 +17,9 @@
                     <lightning-button label="Add" variant="brand" onclick={addTodo}></lightning-button>
                 </lightning-layout-item>
             </lightning-layout>
-        </p>
+        </div>
             <div slot="footer">
-                <template for:each={todoList} for:item="todo" if:true={hasTodoListItems}>
+                <template for:each={todoList} for:item="todo">
                     <c-todo-item 
                         key={todo.id} 
                         todo-value={todo.value} 

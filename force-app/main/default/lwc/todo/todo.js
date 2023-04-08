@@ -3,13 +3,7 @@ import { LightningElement } from 'lwc';
 export default class Todo extends LightningElement {
 
     todoValue = '';
-    todoList = [
-        {
-            id : 1,
-            value : 'test',
-            status : true
-        }
-    ];
+    todoList = [];
 
     idCounter = 0;
 
